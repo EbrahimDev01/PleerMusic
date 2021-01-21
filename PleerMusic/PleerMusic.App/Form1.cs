@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PleerMusic.App.FormSongs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,5 +22,35 @@ namespace PleerMusic.App
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SelectForms(((Button)sender).Text);
+        }
+
+
+
+        private void SelectForms(string nameForm)
+        {
+            switch (nameForm)
+            {
+
+                case "Songs":
+                    {
+                        frmSongs songs = new frmSongs();
+                        songs.TopLevel = false;
+                        songs.Dock = DockStyle.Fill;
+                        this.plListMusic.Controls.Add(songs);
+                        songs.Show();
+                        break;
+                    }
+
+                default:
+                    break;
+
+            }
+        }
+
+
     }
 }
