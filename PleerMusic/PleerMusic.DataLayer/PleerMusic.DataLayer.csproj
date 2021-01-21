@@ -52,15 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\PleerMusicDB.cs" />
+    <Compile Include="Context\uowPleerMusic.cs" />
     <Compile Include="Models\AlbumMusic.cs" />
     <Compile Include="Models\Music.cs" />
     <Compile Include="Models\Singer.cs" />
-    <Compile Include="PleerMusicRepository\IPleerMusicRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PleerMusicGeneric.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
