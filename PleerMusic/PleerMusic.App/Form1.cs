@@ -25,17 +25,49 @@ namespace PleerMusic.App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SelectForms(((Button)sender).Text);
+            CheckIsExist(Convert.ToInt32(((Button)sender).Tag));
         }
 
 
-
-        private void SelectForms(string nameForm)
+        /// <summary>
+        /// Check For Is Form In plList Existr Or Repetitious 
+        /// </summary>
+        /// <param name="tagForm"></param>
+        private void CheckIsExist(int tagForm)
         {
-            switch (nameForm)
+
+            if (plListMusic.Controls.Count == 0)
+            {
+                SelectForms(tagForm);
+            }
+
+            else if (tagForm != Convert.ToInt32(plListMusic.Controls[0].Tag))
+
+            {
+                SelectForms(tagForm);
+            }
+
+            else
+            {
+                plListMusic.Controls.Clear();
+                SelectForms(tagForm);
+            }
+
+        }
+
+
+        /// <summary>
+        /// Choose between forms For Show in Panel List Music
+        /// </summary>
+        /// <param name="tagForm">Number Form</param>
+        private void SelectForms(int tagForm)
+        {
+
+
+            switch (tagForm)
             {
 
-                case "Songs":
+                case 1:
                     {
                         frmSongs songs = new frmSongs();
                         songs.TopLevel = false;
@@ -51,19 +83,6 @@ namespace PleerMusic.App
             }
         }
 
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
 
-        }
-
-        private void plListMusic_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void toolStrip1_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
     }
 }
