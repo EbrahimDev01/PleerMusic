@@ -42,16 +42,12 @@ namespace PleerMusic.App
             }
 
             else if (tagForm != Convert.ToInt32(plListMusic.Controls[0].Tag))
-
-            {
-                SelectForms(tagForm);
-            }
-
-            else
             {
                 plListMusic.Controls.Clear();
                 SelectForms(tagForm);
+
             }
+
 
         }
 

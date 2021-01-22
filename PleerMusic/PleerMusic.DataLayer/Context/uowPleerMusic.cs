@@ -69,7 +69,7 @@ namespace PleerMusic.DataLayer.Context
 
         public void Save()
         {
-            Db.SaveChanges();
+            Db?.SaveChanges();
         }
 
         public void Dispose()

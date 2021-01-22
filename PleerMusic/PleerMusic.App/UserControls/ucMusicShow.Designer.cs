@@ -66,7 +66,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblNameMusic;
-        private System.Windows.Forms.Label lblNameSinger;
+        public System.Windows.Forms.Label lblNameMusic;
+        public System.Windows.Forms.Label lblNameSinger;
     }
 }

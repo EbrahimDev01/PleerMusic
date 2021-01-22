@@ -22,12 +22,12 @@ namespace PleerMusic.App.FormSongs
 
         private void frmSongs_Load(object sender, EventArgs e)
         {
-
+            ListMusicBind();
         }
 
         private void ListMusicBind()
         {
-          
+            this.Controls.AddRange(ConvertMusicToControlMusic.Shows());
         }
 
 
