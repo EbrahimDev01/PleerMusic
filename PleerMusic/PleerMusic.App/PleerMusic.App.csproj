@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ConvertMusicToControl.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,15 +98,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PleerMusic.Utility\PleerMusic.Utility.csproj">
-      <Project>{e24536f4-ed5b-4372-bcd2-165bdec52537}</Project>
-      <Name>PleerMusic.Utility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PleerMusic.ViewModels\PleerMusic.ViewModels.csproj">
-      <Project>{9E95697E-8311-4426-86AB-16E6C51AE3C6}</Project>
-      <Name>PleerMusic.ViewModels</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
