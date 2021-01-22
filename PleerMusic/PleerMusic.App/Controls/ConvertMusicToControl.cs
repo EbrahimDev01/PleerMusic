@@ -1,4 +1,5 @@
 ﻿using PleerMusic.App.UserControls;
+using PleerMusic.ViewModels.MusicViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace PleerMusic.App
 
         public List<ucMusicShow> Shows()
         {
-
+            return null;
         }
 
-        
+
 
     }
 }

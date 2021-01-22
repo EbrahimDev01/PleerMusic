@@ -1,8 +1,6 @@
 ﻿
 using PleerMusic.DataLayer.Context;
-using PleerMusic.Utility.MusicControl;
-using PleerMusic.Utility.UserControls;
-using PleerMusic.ViewModels.MusicViewMosels;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,27 +27,7 @@ namespace PleerMusic.App.FormSongs
 
         private void ListMusicBind()
         {
-            List<UserMusicControl> musicControls;
-            using (uowPleerMusic db = new uowPleerMusic())
-            {
-                List<MusicModel> musics = db.pMusic.GetAll().Select(
-                    m =>
-                    new MusicModel
-                    {
-                        MusicID = m.MusicID,
-                        MusicAddress = m.MusicAddress,
-                        MusicName = m.MusicName,
-                        AlbumThisMusic = m.AlbumThisMusic.NameAlmum,
-                        SingerThisMusic = m.SingerThisMusic.SignerName
-
-                    }
-
-                ).ToList();
-
-                musicControls = MusicsControl.musicsControls(musics).ToList();
-
-            }
-            this.Controls.AddRange(musicControls.ToArray());
+          
         }
 
 

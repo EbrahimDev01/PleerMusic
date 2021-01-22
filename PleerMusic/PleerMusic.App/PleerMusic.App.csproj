@@ -107,6 +107,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PleerMusic.ViewModels\PleerMusic.ViewModels.csproj">
+      <Project>{9E95697E-8311-4426-86AB-16E6C51AE3C6}</Project>
+      <Name>PleerMusic.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
