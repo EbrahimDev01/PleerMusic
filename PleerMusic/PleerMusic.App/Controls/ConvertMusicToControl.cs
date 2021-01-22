@@ -28,6 +28,10 @@ namespace PleerMusic.App
             {
                 using (uowPleerMusic db = new uowPleerMusic())
                 {
+
+                    
+
+
                     return db.pMusic.GetAll()
                         .Select(
                         m =>
@@ -36,9 +40,11 @@ namespace PleerMusic.App
                             AlbumThisMusic = (m.AlbumThisMusic == null) ? "" : m.AlbumThisMusic.NameAlmum,
                             MusicAddress = m.MusicAddress,
                             MusicName = m.MusicName,
-                            SingerThisMusic = (m.SingerThisMusic == null) ? "" : m.SingerThisMusic.SignerName,
+                            SingerThisMusic = "",
                             MusicID = m.MusicID
                         }).ToList();
+
+
                 }
             });
         }
@@ -72,10 +78,13 @@ namespace PleerMusic.App
 
 
                     }
-                    
+
                     return controls;
                 });
         }
+
+
+        
 
     }
 }

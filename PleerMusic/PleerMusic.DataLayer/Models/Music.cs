@@ -19,7 +19,7 @@ namespace PleerMusic.DataLayer.Models
 
         public AlbumMusic AlbumThisMusic { get; set; }
 
-        public Singer SingerThisMusic { set; get; }
+        public List<Singer> SingerThisMusic { set; get; }
 
 
     }
