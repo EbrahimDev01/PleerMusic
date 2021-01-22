@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PleerMusic.App.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,13 @@ namespace PleerMusic.App
 {
     public class ConvertMusicToControlMusic
     {
+
+        public List<ucMusicShow> Shows()
+        {
+
+        }
+
+        
+
     }
 }
