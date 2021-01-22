@@ -38,14 +38,14 @@ namespace PleerMusic.App
                         m =>
                         new vmMusic
                         {
-                            AlbumThisMusic = ((AlbumMusic)(db.pMusic.GetAll(m1 => m1.MusicID == m1.MusicID, "AlbumThisMusic"))?.FirstOrDefault().AlbumThisMusic).NameAlmum,
+                            AlbumThisMusic = ((AlbumMusic)(db.pMusic.GetAll(m1 => m1.MusicID == m.MusicID, "AlbumThisMusic"))?.FirstOrDefault().AlbumThisMusic).NameAlmum,
                             MusicAddress = m.MusicAddress,
                             MusicName = m.MusicName,
-                            SingerThisMusic = (mergeNameSinger((List<Singer>)(db.pMusic.GetAll(m1 => m1.MusicID == m1.MusicID, "SingerThisMusic")).FirstOrDefault().SingerThisMusic)).ToString(),
+                            SingerThisMusic = (mergeNameSinger((List<Singer>)(db.pMusic.GetAll(m1 => m.MusicID == m1.MusicID, "SingerThisMusic")).FirstOrDefault().SingerThisMusic)).ToString(),
                             MusicID = m.MusicID
                         }).ToList();
 
-                    //((db.pMusic.GetAll(i => i.MusicID == m.MusicID, "SingerThisMusic")).ToArray())
+                 
 
 
 

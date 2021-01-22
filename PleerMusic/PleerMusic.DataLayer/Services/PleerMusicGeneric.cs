@@ -22,7 +22,7 @@ namespace PleerMusic.DataLayer.Services
             _DbSet = Db.Set<TEntity>();
         }
 
-        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> where = null, params string[] include )
+        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> where = null, params string[] include)
         {
 
             IQueryable<TEntity> query = _DbSet;
@@ -31,19 +31,20 @@ namespace PleerMusic.DataLayer.Services
             {
                 query = query.Where(where);
             }
-            if (include.Length!=0)
+            if (include.Length != 0)
             {
                 for (int i = 0; i < include.Length; i++)
                 {
+                    var a = query.Include(include[i]).ToList();
                     query = query.Include(include[i]);
                 }
-               
+
             }
 
-           
+
 
             return query.ToList();
-           
+
         }
 
         public TEntity GetById(object ID)
