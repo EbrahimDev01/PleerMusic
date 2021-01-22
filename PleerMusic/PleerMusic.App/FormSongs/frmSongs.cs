@@ -20,14 +20,14 @@ namespace PleerMusic.App.FormSongs
             InitializeComponent();
         }
 
-        private void frmSongs_Load(object sender, EventArgs e)
+        private async void frmSongs_Load(object sender, EventArgs e)
         {
-            ListMusicBind();
+            await ListMusicBind();
         }
 
-        private void ListMusicBind()
+        private async Task ListMusicBind()
         {
-            this.Controls.AddRange(ConvertMusicToControlMusic.Shows());
+            Controls.AddRange((await ConvertMusicToControlMusic.Shows()).ToArray());
         }
 
 
