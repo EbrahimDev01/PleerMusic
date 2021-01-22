@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PleerMusic.ViewModels", "Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PleerMusic.App", "PleerMusic.App\PleerMusic.App.csproj", "{5AD7540E-7E99-4B9F-9E88-B1F12DC1B3F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{87961224-CF3D-47D5-9A91-BEA56C35B628}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5AD7540E-7E99-4B9F-9E88-B1F12DC1B3F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AD7540E-7E99-4B9F-9E88-B1F12DC1B3F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AD7540E-7E99-4B9F-9E88-B1F12DC1B3F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87961224-CF3D-47D5-9A91-BEA56C35B628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87961224-CF3D-47D5-9A91-BEA56C35B628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87961224-CF3D-47D5-9A91-BEA56C35B628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87961224-CF3D-47D5-9A91-BEA56C35B628}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

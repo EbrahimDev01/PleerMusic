@@ -22,7 +22,7 @@ namespace PleerMusic.DataLayer.Services
             _DbSet = Db.Set<TEntity>();
         }
 
-        IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> where = null)
+        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> where = null)
         {
 
             IQueryable<TEntity> query = _DbSet;
@@ -36,13 +36,13 @@ namespace PleerMusic.DataLayer.Services
 
         }
 
-        TEntity GetById(object ID)
+        public TEntity GetById(object ID)
         {
             return _DbSet.Find(ID);
         }
 
 
-        void Insert(TEntity entity)
+        public void Insert(TEntity entity)
         {
 
             attaching(entity);
@@ -51,14 +51,14 @@ namespace PleerMusic.DataLayer.Services
 
         }
 
-        void Delete(TEntity entity)
+        public void Delete(TEntity entity)
         {
             attaching(entity);
 
             _Db.Entry(entity).State = EntityState.Deleted;
         }
 
-        void Delete(object ID)
+        public void Delete(object ID)
         {
 
             TEntity res = GetById(ID);
@@ -66,7 +66,7 @@ namespace PleerMusic.DataLayer.Services
             Delete(res);
 
         }
-        void attaching(TEntity entity)
+        private void attaching(TEntity entity)
         {
             if (_Db.Entry(entity).State == EntityState.Detached)
             {

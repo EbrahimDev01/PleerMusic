@@ -40,6 +40,7 @@
             this.Name = "frmSongs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "1";
+            this.Load += new System.EventHandler(this.frmSongs_Load);
             this.ResumeLayout(false);
 
         }

@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E95697E-8311-4426-86AB-16E6C51AE3C6}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PleerMusic.ViewModels</RootNamespace>
-    <AssemblyName>PleerMusic.ViewModels</AssemblyName>
+    <ProjectGuid>{87961224-CF3D-47D5-9A91-BEA56C35B628}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleApp1</RootNamespace>
+    <AssemblyName>ConsoleApp1</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\PleerMusic.DataLayer\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\PleerMusic.DataLayer\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,8 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MusicViewMosels\MusicModel.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PleerMusic.Business\PleerMusic.Business.csproj">
+      <Project>{3352b714-0287-4122-a4f0-cc1ccc2aa861}</Project>
+      <Name>PleerMusic.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PleerMusic.DataLayer\PleerMusic.DataLayer.csproj">
+      <Project>{3302befd-6cad-418b-a37b-03f72cc31884}</Project>
+      <Name>PleerMusic.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PleerMusic.Utility\PleerMusic.Utility.csproj">
+      <Project>{e24536f4-ed5b-4372-bcd2-165bdec52537}</Project>
+      <Name>PleerMusic.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PleerMusic.ViewModels\PleerMusic.ViewModels.csproj">
+      <Project>{9e95697e-8311-4426-86ab-16e6c51ae3c6}</Project>
+      <Name>PleerMusic.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

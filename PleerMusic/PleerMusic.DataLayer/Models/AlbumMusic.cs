@@ -12,6 +12,8 @@ namespace PleerMusic.DataLayer.Models
         [Key]
         public int AlbumMusicID { get; set; }
 
+        public string NameAlmum { set; get; }
+
         public List<Music> MusicOfThisAlbum { get; set; }
 
         public List<Singer> SingersThisAlbum { get; set; }

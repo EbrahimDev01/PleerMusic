@@ -22,7 +22,7 @@ namespace PleerMusic.DataLayer.Context
 
         private PleerMusicGeneric<Music> _music;
 
-        public PleerMusicGeneric<Music> pMusicGeneric
+        public PleerMusicGeneric<Music> pMusic
         {
             get
             {
