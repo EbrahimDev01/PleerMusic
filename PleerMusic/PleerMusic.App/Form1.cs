@@ -1,4 +1,5 @@
-﻿using PleerMusic.App.FormSongs;
+﻿using PleerMusic.App.Controls.PlayMusic;
+using PleerMusic.App.FormSongs;
 using PleerMusic.DataLayer.Context;
 using PleerMusic.DataLayer.Models;
 using PleerMusic.Utility.MusicControl;
@@ -24,7 +25,7 @@ namespace PleerMusic.App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           // CheckIsExist(_numberForm);
+            // CheckIsExist(_numberForm);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -89,7 +90,7 @@ namespace PleerMusic.App
         private async void addMusicToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             List<string> musicList = SelectMusic();
-            if (musicList!=null)
+            if (musicList != null)
             {
                 List<(Music music, AlbumMusic album, Singer singer)> listClass = await ConvertAddresToClass.ToClass(musicList);
 
@@ -132,6 +133,12 @@ namespace PleerMusic.App
             CheckIsExist(_numberForm);
 
         }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            PlayMusicContorl.PlayMusic();
+        }
+
 
     }
 }
