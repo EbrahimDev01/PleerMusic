@@ -108,6 +108,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PleerMusic.Utility\PleerMusic.Utility.csproj">
+      <Project>{E24536F4-ED5B-4372-BCD2-165BDEC52537}</Project>
+      <Name>PleerMusic.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PleerMusic.ViewModels\PleerMusic.ViewModels.csproj">
       <Project>{9E95697E-8311-4426-86AB-16E6C51AE3C6}</Project>
       <Name>PleerMusic.ViewModels</Name>

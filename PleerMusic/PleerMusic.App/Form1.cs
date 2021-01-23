@@ -1,4 +1,7 @@
 ﻿using PleerMusic.App.FormSongs;
+using PleerMusic.DataLayer.Context;
+using PleerMusic.DataLayer.Models;
+using PleerMusic.Utility.MusicControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,9 +82,14 @@ namespace PleerMusic.App
             }
         }
 
-        private void addMusicToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void addMusicToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            List<string> MusicList = SelectMusic();
+            List<string> musicList = SelectMusic();
+
+
+            List<(Music music, AlbumMusic album, Singer singer)> listClass = await ConvertAddresToClass.ToClass(musicList);
+
+            await InsertMusicsToDb(listClass);
         }
 
         private List<string> SelectMusic()
@@ -97,10 +105,25 @@ namespace PleerMusic.App
             return null;
         }
 
-        private async void InsertMusicsToDb(List<string> address)
+        private async Task InsertMusicsToDb(List<(Music music, AlbumMusic album, Singer singer)> listClass)
         {
-            
-            
+
+            using (uowPleerMusic db = new uowPleerMusic())
+            {
+                await Task.Run(() =>
+                  {
+                      foreach ((Music music, AlbumMusic album, Singer singer) item in listClass)
+                      {
+                          db.pAlbumMusic.Insert(item.album);
+                          db.pMusic.Insert(item.music);
+                          db.pSinger.Insert(item.singer);
+
+                          db.Save();
+                      }
+
+                  });
+            }
+
         }
 
     }
