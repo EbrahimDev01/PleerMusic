@@ -117,5 +117,6 @@
       <Name>PleerMusic.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
