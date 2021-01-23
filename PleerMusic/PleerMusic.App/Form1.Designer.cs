@@ -235,6 +235,7 @@
             this.pcMusicImage.Location = new System.Drawing.Point(0, 0);
             this.pcMusicImage.Name = "pcMusicImage";
             this.pcMusicImage.Size = new System.Drawing.Size(116, 116);
+            this.pcMusicImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcMusicImage.TabIndex = 0;
             this.pcMusicImage.TabStop = false;
             // 

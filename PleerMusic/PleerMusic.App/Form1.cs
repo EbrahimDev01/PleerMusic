@@ -117,17 +117,17 @@ namespace PleerMusic.App
             using (uowPleerMusic db = new uowPleerMusic())
             {
                 await Task.Run(() =>
-                  {
-                      foreach ((Music music, AlbumMusic album, Singer singer) item in listClass)
-                      {
-                          db.pAlbumMusic.Insert(item.album);
-                          db.pMusic.Insert(item.music);
-                          db.pSinger.Insert(item.singer);
+                {
+                    foreach ((Music music, AlbumMusic album, Singer singer) item in listClass)
+                    {
+                        db.pAlbumMusic.Insert(item.album);
+                        db.pMusic.Insert(item.music);
+                        db.pSinger.Insert(item.singer);
 
-                          db.Save();
-                      }
+                        db.Save();
+                    }
 
-                  });
+                });
             }
             plListMusic.Controls.Clear();
             CheckIsExist(_numberForm);
@@ -136,9 +136,27 @@ namespace PleerMusic.App
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            PlayMusicContorl.PlayMusic();
+
+            PlayOrStop();
         }
 
+        private void PlayOrStop()
+        {
+            if (PlayMusicContorl.IsPlay)
+            {
+                PlayMusicContorl.StopMusic();
+            }
+            else
+            {
+                PlayMusicContorl.PlayMusic();
+            }
+        }
 
+        private void PrepareforPlayMusic(string address)
+        {
+            PlayMusicContorl.Address = address;
+            PlayMusicContorl.StartUse();
+            pcMusicImage.Image = PlayMusicContorl.Image();
+        }
     }
 }

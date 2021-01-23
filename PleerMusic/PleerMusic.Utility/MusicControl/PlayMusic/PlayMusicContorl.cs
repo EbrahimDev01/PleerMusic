@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +29,30 @@ namespace PleerMusic.App.Controls.PlayMusic
         }
         private static string _address;
 
-
         private static AudioFileReader audioFileReader = null;
+
         private static WaveOut wave = null;
+
+        public static bool IsPlay
+        {
+            get
+            {
+                if (wave == null)
+                {
+                    return false;
+                }
+                return (wave.PlaybackState.ToString() != "Stopped") ? true : false;
+
+            }
+        }
+
+
 
 
         public static void PlayMusic()
         {
-
             wave.Play();
+
         }
 
         public static void StopMusic()
@@ -57,5 +74,27 @@ namespace PleerMusic.App.Controls.PlayMusic
             wave.Init(audioFileReader);
         }
 
+        public static Bitmap Image()
+        {
+            using (TagLib.File file = TagLib.File.Create(_address))
+            {
+                using (var mStream = new MemoryStream())
+                {
+                    var firstPicture = file.Tag.Pictures.FirstOrDefault();
+                    if (firstPicture != null)
+                    {
+                        byte[] pData = firstPicture.Data.Data;
+                        mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                        var bm = new Bitmap(mStream, false);
+                        mStream.Dispose();
+                        return bm;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
     }
 }
