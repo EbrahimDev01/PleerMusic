@@ -81,8 +81,6 @@ namespace PleerMusic.App
                         break;
                     }
 
-                default:
-                    break;
 
             }
         }
@@ -136,7 +134,6 @@ namespace PleerMusic.App
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-
             PlayOrStop();
         }
 
@@ -152,11 +149,14 @@ namespace PleerMusic.App
             }
         }
 
+
         private void PrepareforPlayMusic(string address)
         {
             PlayMusicContorl.Address = address;
             PlayMusicContorl.StartUse();
             pcMusicImage.Image = PlayMusicContorl.Image();
         }
+
+
     }
 }
