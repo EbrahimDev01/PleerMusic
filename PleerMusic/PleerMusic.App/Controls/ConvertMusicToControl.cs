@@ -31,7 +31,7 @@ namespace PleerMusic.App
                 {
 
 
-                    
+
 
                     return db.pMusic.GetAll()
                         .Select(
@@ -45,7 +45,7 @@ namespace PleerMusic.App
                             MusicID = m.MusicID
                         }).ToList();
 
-                 
+
 
 
 
@@ -70,8 +70,9 @@ namespace PleerMusic.App
                     ucMusic.lblNameMusic.Text = m.MusicName;
                     ucMusic.lblNameSinger.Text = m.SingerThisMusic;
                     ucMusic.Dock = DockStyle.Top;
-                    controls.Add(ucMusic);
                     ucMusic.TabIndex = 1;
+                    ucMusic.lblNameSinger.Name = ucMusic.lblNameMusic.Name = m.MusicAddress;
+                    controls.Add(ucMusic);
 
                     Panel p = new Panel();
                     p.Dock = DockStyle.Top;

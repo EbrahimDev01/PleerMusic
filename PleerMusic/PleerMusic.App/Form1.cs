@@ -19,17 +19,21 @@ namespace PleerMusic.App
         public PleerMusic()
         {
             InitializeComponent();
+            CheckIsExist(_numberForm);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           // CheckIsExist(_numberForm);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             CheckIsExist(Convert.ToInt32(((Button)sender).Tag));
         }
+
+        private int _numberForm = 1;
+
 
 
         /// <summary>
@@ -62,7 +66,7 @@ namespace PleerMusic.App
         private void SelectForms(int tagForm)
         {
 
-
+            _numberForm = tagForm;
             switch (tagForm)
             {
 
@@ -85,11 +89,12 @@ namespace PleerMusic.App
         private async void addMusicToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             List<string> musicList = SelectMusic();
+            if (musicList!=null)
+            {
+                List<(Music music, AlbumMusic album, Singer singer)> listClass = await ConvertAddresToClass.ToClass(musicList);
 
-
-            List<(Music music, AlbumMusic album, Singer singer)> listClass = await ConvertAddresToClass.ToClass(musicList);
-
-            await InsertMusicsToDb(listClass);
+                await InsertMusicsToDb(listClass);
+            }
         }
 
         private List<string> SelectMusic()
@@ -123,6 +128,8 @@ namespace PleerMusic.App
 
                   });
             }
+            plListMusic.Controls.Clear();
+            CheckIsExist(_numberForm);
 
         }
 

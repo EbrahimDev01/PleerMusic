@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Id3Lib.Exceptions;
 using TagLib;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PleerMusic.Utility.MusicControl
 {
@@ -15,22 +16,28 @@ namespace PleerMusic.Utility.MusicControl
 
         public static async Task<List<(Music music, AlbumMusic album, Singer singer)>> ToClass(List<string> listAddress)
         {
-
-
             List<(Music music, AlbumMusic album, Singer singer)> lsitClass = new List<(Music music, AlbumMusic album, Singer singer)>();
 
             await Task.Run(() =>
             {
-
-
                 foreach (string addres in listAddress)
                 {
-                    using (File file = File.Create(addres))
+                    using (TagLib.File file = TagLib.File.Create(addres))
                     {
+                        string name = "";
+
+                        using (OpenFileDialog openFile = new OpenFileDialog())
+                        {
+                            openFile.FileName = addres;
+                            int extensionLength = Path.GetExtension(addres).Length;
+
+                            name = openFile.SafeFileName.Remove(openFile.SafeFileName.Length - extensionLength);
+
+                        }
 
                         Music music = new Music();
                         music.MusicAddress = addres;
-                        music.MusicName = file.Tag.Title;
+                        music.MusicName = (file.Tag.Title == null) ? name : file.Tag.Title;
 
                         AlbumMusic albumMusic = new AlbumMusic();
                         albumMusic.NameAlmum = (file.Tag.Album == null) ? "Singel" : file.Tag.Album;
@@ -71,6 +78,7 @@ namespace PleerMusic.Utility.MusicControl
                 }
             });
             return lsitClass;
+
         }
 
 
