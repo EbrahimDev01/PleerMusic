@@ -97,7 +97,11 @@ namespace PleerMusic.App
             return null;
         }
 
-        
+        private async void InsertMusicsToDb(List<string> address)
+        {
+            
+            
+        }
 
     }
 }

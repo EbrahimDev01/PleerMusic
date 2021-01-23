@@ -1,20 +1,18 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PleerMusic.Utility.UserControls;
-using PleerMusic.ViewModels.MusicViewMosels;
+using PleerMusic.ViewModels.MusicViewModel;
 
 namespace PleerMusic.Utility.MusicControl
 {
     public class MusicsControl
     {
-        public static IEnumerable<UserMusicControl> musicsControls(List<MusicModel> musics)
+        public static IEnumerable<UserMusicControl> musicsControls(List<vmMusic> musics)
         {
-            foreach (MusicModel m in musics)
+            foreach (vmMusic m in musics)
             {
                 UserMusicControl musicsControl = new UserMusicControl();
 
@@ -23,7 +21,7 @@ namespace PleerMusic.Utility.MusicControl
 
                 yield return musicsControl;
             }
-            
+
         }
     }
 }
