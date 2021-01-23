@@ -79,6 +79,25 @@ namespace PleerMusic.App
             }
         }
 
+        private void addMusicToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            List<string> MusicList = SelectMusic();
+        }
+
+        private List<string> SelectMusic()
+        {
+
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Multiselect = true;
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                return openFile.FileNames.ToList();
+            }
+            return null;
+        }
+
+        
 
     }
 }
