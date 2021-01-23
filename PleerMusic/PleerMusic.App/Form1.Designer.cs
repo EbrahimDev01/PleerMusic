@@ -46,12 +46,16 @@
             this.lblNameMusic = new System.Windows.Forms.Label();
             this.pcMusicImage = new System.Windows.Forms.PictureBox();
             this.plListMusic = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addMusicToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.plTopBar.SuspendLayout();
             this.plControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbVolume)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbTimeMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMusicImage)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // plTopBar
@@ -63,7 +67,7 @@
             this.plTopBar.Controls.Add(this.btnPlayLists);
             this.plTopBar.Controls.Add(this.btnSongs);
             this.plTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.plTopBar.Location = new System.Drawing.Point(0, 0);
+            this.plTopBar.Location = new System.Drawing.Point(0, 24);
             this.plTopBar.Name = "plTopBar";
             this.plTopBar.Size = new System.Drawing.Size(390, 78);
             this.plTopBar.TabIndex = 0;
@@ -236,10 +240,34 @@
             // plListMusic
             // 
             this.plListMusic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plListMusic.Location = new System.Drawing.Point(0, 78);
+            this.plListMusic.Location = new System.Drawing.Point(0, 102);
             this.plListMusic.Name = "plListMusic";
-            this.plListMusic.Size = new System.Drawing.Size(390, 440);
+            this.plListMusic.Size = new System.Drawing.Size(390, 416);
             this.plListMusic.TabIndex = 3;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.moreToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(390, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // moreToolStripMenuItem
+            // 
+            this.moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addMusicToolStripMenuItem1});
+            this.moreToolStripMenuItem.Name = "moreToolStripMenuItem";
+            this.moreToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.moreToolStripMenuItem.Text = "More";
+            // 
+            // addMusicToolStripMenuItem1
+            // 
+            this.addMusicToolStripMenuItem1.Name = "addMusicToolStripMenuItem1";
+            this.addMusicToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addMusicToolStripMenuItem1.Text = "Add Music";
             // 
             // PleerMusic
             // 
@@ -249,7 +277,9 @@
             this.Controls.Add(this.plListMusic);
             this.Controls.Add(this.plControl);
             this.Controls.Add(this.plTopBar);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "PleerMusic";
             this.Text = "PleerMusic";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -259,7 +289,10 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trbTimeMusic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMusicImage)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -284,6 +317,9 @@
         private System.Windows.Forms.Button btnPlayLists;
         private System.Windows.Forms.Button btnFolders;
         private System.Windows.Forms.Label lblNameMusic;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem moreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addMusicToolStripMenuItem1;
     }
 }
 
