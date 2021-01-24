@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Image\ImageControl.cs" />
     <Compile Include="MusicControl\ConvertAddresToClass.cs" />
     <Compile Include="MusicControl\MusicsControl.cs" />
     <Compile Include="MusicControl\PlayMusic\PlayMusicContorl.cs" />
@@ -138,5 +139,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

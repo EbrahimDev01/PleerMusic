@@ -97,6 +97,7 @@ namespace PleerMusic.App.Controls.PlayMusic
             }
         }
 
+
         public static Bitmap Image(int width = 116, int height = 116)
         {
             try
@@ -115,7 +116,7 @@ namespace PleerMusic.App.Controls.PlayMusic
 
                             mStream.Dispose();
                             
-                            Bitmap bmImage = (Bitmap)Resize(bm, width, height);
+                            Bitmap bmImage = ResizeImage(bm, width, height);
                             bm.Dispose();
                             return bmImage;
                         }
@@ -128,26 +129,10 @@ namespace PleerMusic.App.Controls.PlayMusic
             return null;
         }
 
-        public static Image Resize(Image source, int width, int height)
+        private static Bitmap ResizeImage(Bitmap bm, int width, int height)
         {
-
-            if (source.Width == width && source.Height == height) return source;
-
-            Bitmap result = new Bitmap(width, height, PixelFormat.Format24bppRgb);
-            
-
-                result.SetResolution(source.HorizontalResolution, source.VerticalResolution);
-
-                using (var g = Graphics.FromImage(result))
-
-                    g.DrawImage(source, new Rectangle(0, 0, width, height), new Rectangle(0, 0, source.Width, source.Height), GraphicsUnit.Pixel);
-
-                return result;
-            
-
+            throw new NotImplementedException();
         }
-
-
 
         public static void DisposeInstance()
         {
