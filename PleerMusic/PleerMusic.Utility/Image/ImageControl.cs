@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 using System.Drawing.Imaging;
 
 
-
-
-
-
 namespace PleerMusic.Utility.Image
 {
     public static class ImageControl
     {
-
         public static Bitmap ResizeImage(Bitmap source, int width, int height)
         {
 
@@ -35,5 +30,35 @@ namespace PleerMusic.Utility.Image
 
         }
 
+        public static Bitmap GetImageMusic( string address,int width = 116, int height = 116)
+        {
+            try
+            {
+                using (TagLib.File file = TagLib.File.Create(address))
+                {
+                    using (var mStream = new System.IO.MemoryStream())
+                    {
+                        var firstPicture = file.Tag.Pictures.FirstOrDefault();
+                        if (firstPicture != null)
+                        {
+                            byte[] pData = firstPicture.Data.Data;
+                            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                            pData = null;
+                            Bitmap bm = new Bitmap(mStream, false);
+
+                            mStream.Dispose();
+
+                            Bitmap bmImage = ResizeImage(bm, width, height);
+                            bm.Dispose();
+                            return bmImage;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+            return null;
+        }
     }
 }

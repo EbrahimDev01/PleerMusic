@@ -28,7 +28,7 @@ namespace PleerMusic.App.UserControls
             PlayMusicContorl.Address = address;
             PlayMusicContorl.StartUse();
             PlayMusicContorl.PlayMusic();
-            ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).pcMusicImage.Image = PlayMusicContorl.Image();
+            ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).pcMusicImage.Image = PlayMusicContorl.GetImageMusic();
         }
     }
 }

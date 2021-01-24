@@ -158,12 +158,12 @@ namespace PleerMusic.App
 
 
 
-        private void PrepareforPlayMusic(string address)
-        {
-            PlayMusicContorl.Address = address;
-            PlayMusicContorl.StartUse();
-            pcMusicImage.Image = PlayMusicContorl.Image();
-        }
+        //private void PrepareforPlayMusic(string address)
+        //{
+        //    PlayMusicContorl.Address = address;
+        //    PlayMusicContorl.StartUse();
+        //    pcMusicImage.Image = PlayMusicContorl.GetImageMusic();
+        //}
 
         private void moreToolStripMenuItem_Click(object sender, EventArgs e)
         {

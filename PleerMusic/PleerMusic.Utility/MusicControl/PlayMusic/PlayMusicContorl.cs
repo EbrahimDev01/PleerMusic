@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NAudio.Wave;
+using PleerMusic.Utility.Image;
 using WMPLib;
 
 namespace PleerMusic.App.Controls.PlayMusic
@@ -97,41 +98,10 @@ namespace PleerMusic.App.Controls.PlayMusic
             }
         }
 
-
-        public static Bitmap Image(int width = 116, int height = 116)
+        public static Bitmap GetImageMusic(int width = 116, int height = 116)
         {
-            try
-            {
-                using (TagLib.File file = TagLib.File.Create(_address))
-                {
-                    using (var mStream = new MemoryStream())
-                    {
-                        var firstPicture = file.Tag.Pictures.FirstOrDefault();
-                        if (firstPicture != null)
-                        {
-                            byte[] pData = firstPicture.Data.Data;
-                            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
-                            pData = null;
-                            Bitmap bm = new Bitmap(mStream, false);
 
-                            mStream.Dispose();
-                            
-                            Bitmap bmImage = ResizeImage(bm, width, height);
-                            bm.Dispose();
-                            return bmImage;
-                        }
-                    }
-                }
-            }
-            catch
-            {
-            }
-            return null;
-        }
-
-        private static Bitmap ResizeImage(Bitmap bm, int width, int height)
-        {
-            throw new NotImplementedException();
+            return ImageControl.GetImageMusic(_address, width, height);
         }
 
         public static void DisposeInstance()
