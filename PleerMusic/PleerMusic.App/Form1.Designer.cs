@@ -264,11 +264,12 @@
             this.moreToolStripMenuItem.Name = "moreToolStripMenuItem";
             this.moreToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.moreToolStripMenuItem.Text = "More";
+            this.moreToolStripMenuItem.Click += new System.EventHandler(this.moreToolStripMenuItem_Click);
             // 
             // addMusicToolStripMenuItem1
             // 
             this.addMusicToolStripMenuItem1.Name = "addMusicToolStripMenuItem1";
-            this.addMusicToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.addMusicToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.addMusicToolStripMenuItem1.Text = "Add Music";
             this.addMusicToolStripMenuItem1.Click += new System.EventHandler(this.addMusicToolStripMenuItem1_Click);
             // 

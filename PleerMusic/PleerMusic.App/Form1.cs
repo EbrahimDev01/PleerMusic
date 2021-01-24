@@ -94,18 +94,23 @@ namespace PleerMusic.App
                 List<(Music music, AlbumMusic album, Singer singer)> listClass = await ConvertAddresToClass.ToClass(musicList);
 
                 await InsertMusicsToDb(listClass);
+                musicList = null;
+                listClass = null;
             }
         }
 
         private List<string> SelectMusic()
         {
 
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Multiselect = true;
-
-            if (openFile.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog openFile = new OpenFileDialog())
             {
-                return openFile.FileNames.ToList();
+
+                openFile.Multiselect = true;
+
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    return openFile.FileNames.ToList();
+                }
             }
             return null;
         }
@@ -151,7 +156,7 @@ namespace PleerMusic.App
             }
         }
 
-       
+
 
         private void PrepareforPlayMusic(string address)
         {
@@ -160,6 +165,9 @@ namespace PleerMusic.App
             pcMusicImage.Image = PlayMusicContorl.Image();
         }
 
+        private void moreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

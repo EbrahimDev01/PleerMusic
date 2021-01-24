@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,7 @@ using WMPLib;
 
 namespace PleerMusic.App.Controls.PlayMusic
 {
-    public static class PlayMusicContorl
+    public class PlayMusicContorl : IDisposable
     {
 
 
@@ -53,7 +55,7 @@ namespace PleerMusic.App.Controls.PlayMusic
         {
             try
             {
-                wave.Play();
+                wave?.Play();
             }
             catch
             {
@@ -67,7 +69,7 @@ namespace PleerMusic.App.Controls.PlayMusic
             try
             {
 
-                wave.Stop();
+                wave?.Stop();
             }
             catch
             {
@@ -87,7 +89,7 @@ namespace PleerMusic.App.Controls.PlayMusic
             {
                 audioFileReader = new AudioFileReader(_address);
                 wave = new WaveOut();
-                wave.Init(audioFileReader);
+                wave?.Init(audioFileReader);
 
             }
             catch
@@ -95,7 +97,7 @@ namespace PleerMusic.App.Controls.PlayMusic
             }
         }
 
-        public static Bitmap Image()
+        public static Bitmap Image(int width = 116, int height = 116)
         {
             try
             {
@@ -108,9 +110,14 @@ namespace PleerMusic.App.Controls.PlayMusic
                         {
                             byte[] pData = firstPicture.Data.Data;
                             mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
-                            var bm = new Bitmap(mStream, false);
+                            pData = null;
+                            Bitmap bm = new Bitmap(mStream, false);
+
                             mStream.Dispose();
-                            return bm;
+                            
+                            Bitmap bmImage = (Bitmap)Resize(bm, width, height);
+                            bm.Dispose();
+                            return bmImage;
                         }
                     }
                 }
@@ -119,6 +126,42 @@ namespace PleerMusic.App.Controls.PlayMusic
             {
             }
             return null;
+        }
+
+        public static Image Resize(Image source, int width, int height)
+        {
+
+            if (source.Width == width && source.Height == height) return source;
+
+            Bitmap result = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+            
+
+                result.SetResolution(source.HorizontalResolution, source.VerticalResolution);
+
+                using (var g = Graphics.FromImage(result))
+
+                    g.DrawImage(source, new Rectangle(0, 0, width, height), new Rectangle(0, 0, source.Width, source.Height), GraphicsUnit.Pixel);
+
+                return result;
+            
+
+        }
+
+
+
+        public static void DisposeInstance()
+        {
+            wave?.Dispose();
+            audioFileReader?.Dispose();
+            wave = null;
+            audioFileReader = null;
+            //  Address = null;
+            _address = null;
+        }
+
+        public void Dispose()
+        {
+
         }
     }
 }

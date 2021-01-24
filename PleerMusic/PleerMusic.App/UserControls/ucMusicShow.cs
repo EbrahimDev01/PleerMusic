@@ -24,7 +24,7 @@ namespace PleerMusic.App.UserControls
         }
         private void PrepareforPlayMusic(string address)
         {
-
+            PlayMusicContorl.DisposeInstance();
             PlayMusicContorl.Address = address;
             PlayMusicContorl.StartUse();
             PlayMusicContorl.PlayMusic();
