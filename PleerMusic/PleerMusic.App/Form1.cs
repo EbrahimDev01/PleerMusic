@@ -139,6 +139,7 @@ namespace PleerMusic.App
 
         private void PlayOrStop()
         {
+            
             if (PlayMusicContorl.IsPlay)
             {
                 PlayMusicContorl.StopMusic();

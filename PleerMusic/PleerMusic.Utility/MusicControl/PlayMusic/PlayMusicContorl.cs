@@ -51,13 +51,27 @@ namespace PleerMusic.App.Controls.PlayMusic
 
         public static void PlayMusic()
         {
-            wave.Play();
+            try
+            {
+                wave.Play();
+            }
+            catch
+            {
+            }
+
 
         }
 
         public static void StopMusic()
         {
-            wave.Stop();
+            try
+            {
+
+                wave.Stop();
+            }
+            catch
+            {
+            }
         }
 
         public static void VolumeMusic(int value)
@@ -69,32 +83,42 @@ namespace PleerMusic.App.Controls.PlayMusic
 
         public static void StartUse()
         {
-            audioFileReader = new AudioFileReader(_address);
-            wave = new WaveOut();
-            wave.Init(audioFileReader);
+            try
+            {
+                audioFileReader = new AudioFileReader(_address);
+                wave = new WaveOut();
+                wave.Init(audioFileReader);
+
+            }
+            catch
+            {
+            }
         }
 
         public static Bitmap Image()
         {
-            using (TagLib.File file = TagLib.File.Create(_address))
+            try
             {
-                using (var mStream = new MemoryStream())
+                using (TagLib.File file = TagLib.File.Create(_address))
                 {
-                    var firstPicture = file.Tag.Pictures.FirstOrDefault();
-                    if (firstPicture != null)
+                    using (var mStream = new MemoryStream())
                     {
-                        byte[] pData = firstPicture.Data.Data;
-                        mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
-                        var bm = new Bitmap(mStream, false);
-                        mStream.Dispose();
-                        return bm;
-                    }
-                    else
-                    {
-                        return null;
+                        var firstPicture = file.Tag.Pictures.FirstOrDefault();
+                        if (firstPicture != null)
+                        {
+                            byte[] pData = firstPicture.Data.Data;
+                            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                            var bm = new Bitmap(mStream, false);
+                            mStream.Dispose();
+                            return bm;
+                        }
                     }
                 }
             }
+            catch
+            {
+            }
+            return null;
         }
     }
 }
