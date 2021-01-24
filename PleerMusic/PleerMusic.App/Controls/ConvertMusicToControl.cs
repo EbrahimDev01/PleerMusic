@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using PleerMusic.DataLayer.Models;
+using PleerMusic.Utility.Image;
 
 namespace PleerMusic.App
 {
@@ -20,7 +21,7 @@ namespace PleerMusic.App
             List<vmMusic> vmMusics = await GetDateFromDb();
 
             return await ucMusics(vmMusics);
-            
+
 
         }
 
@@ -74,6 +75,8 @@ namespace PleerMusic.App
                     ucMusic.TabIndex = 1;
                     ucMusic.lblNameSinger.Name = ucMusic.lblNameMusic.Name = m.MusicAddress;
                     controls.Add(ucMusic);
+
+                    ucMusic.pcMusicImage.Image = ImageControl.GetImageMusic(m.MusicAddress, 54, 54);
 
                     Panel p = new Panel();
                     p.Dock = DockStyle.Top;
