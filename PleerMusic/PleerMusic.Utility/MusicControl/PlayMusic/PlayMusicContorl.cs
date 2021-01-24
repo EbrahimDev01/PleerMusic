@@ -35,12 +35,24 @@ namespace PleerMusic.App.Controls.PlayMusic
         {
             get
             {
-                if (audioFileReader == null)
+                if (wave == null)
                 {
                     return "00:00:00";
                 }
 
                 return audioFileReader.TotalTime.Hours.ToString("00") + ":" + audioFileReader.TotalTime.Minutes.ToString("00") + ":" + audioFileReader.TotalTime.Seconds.ToString("00");
+            }
+        }
+
+        public static string PositonTime
+        {
+            get
+            {
+                if (wave == null)
+                {
+                    return "00:00:00";
+                }
+                return audioFileReader.CurrentTime.Hours.ToString("00") + ":" + audioFileReader.CurrentTime.Minutes.ToString("00") + ":" + audioFileReader.CurrentTime.Seconds.ToString("00");
             }
         }
 

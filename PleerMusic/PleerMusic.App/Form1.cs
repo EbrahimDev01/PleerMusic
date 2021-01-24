@@ -174,5 +174,10 @@ namespace PleerMusic.App
         {
             PlayMusicContorl.VolumeMusic((float)trbVolume.Value);
         }
+
+        private void timShowPositionNowMusic_Tick(object sender, EventArgs e)
+        {
+            lblPositionTime.Text = PlayMusicContorl.PositonTime.ToString();
+        }
     }
 }

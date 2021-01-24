@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.plTopBar = new System.Windows.Forms.Panel();
             this.btnFolders = new System.Windows.Forms.Button();
             this.btnArtists = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMusicToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timShowPositionNowMusic = new System.Windows.Forms.Timer(this.components);
             this.plTopBar.SuspendLayout();
             this.plControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbVolume)).BeginInit();
@@ -277,6 +279,11 @@
             this.addMusicToolStripMenuItem1.Text = "Add Music";
             this.addMusicToolStripMenuItem1.Click += new System.EventHandler(this.addMusicToolStripMenuItem1_Click);
             // 
+            // timShowPositionNowMusic
+            // 
+            this.timShowPositionNowMusic.Interval = 700;
+            this.timShowPositionNowMusic.Tick += new System.EventHandler(this.timShowPositionNowMusic_Tick);
+            // 
             // frmPleerMusic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,7 +322,6 @@
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblPositionTime;
         private System.Windows.Forms.TrackBar trbVolume;
         private System.Windows.Forms.Button btnSongs;
         private System.Windows.Forms.Button btnArtists;
@@ -328,6 +334,8 @@
         private System.Windows.Forms.ToolStripMenuItem addMusicToolStripMenuItem1;
         public System.Windows.Forms.PictureBox pcMusicImage;
         public System.Windows.Forms.Label lblMaxTime;
+        public System.Windows.Forms.Timer timShowPositionNowMusic;
+        public System.Windows.Forms.Label lblPositionTime;
     }
 }
 
