@@ -169,5 +169,10 @@ namespace PleerMusic.App
         {
 
         }
+
+        private void trbVolume_Scroll(object sender, EventArgs e)
+        {
+            PlayMusicContorl.VolumeMusic((float)trbVolume.Value);
+        }
     }
 }

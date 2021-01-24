@@ -30,6 +30,20 @@ namespace PleerMusic.App.Controls.PlayMusic
             get { return _address; }
 
         }
+
+        public static string TotalTime
+        {
+            get
+            {
+                if (audioFileReader == null)
+                {
+                    return "00:00:00";
+                }
+
+                return audioFileReader.TotalTime.Hours.ToString("00") + ":" + audioFileReader.TotalTime.Minutes.ToString("00") + ":" + audioFileReader.TotalTime.Seconds.ToString("00");
+            }
+        }
+
         private static string _address;
 
         private static AudioFileReader audioFileReader = null;
@@ -48,9 +62,6 @@ namespace PleerMusic.App.Controls.PlayMusic
 
             }
         }
-
-
-
 
         public static void PlayMusic()
         {
@@ -77,11 +88,10 @@ namespace PleerMusic.App.Controls.PlayMusic
             }
         }
 
-        public static void VolumeMusic(int value)
+        public static void VolumeMusic(float value)
         {
-            wave.Volume = (value / 100);
-
-
+            float volum = (value / 100);
+            wave.Volume = volum;
         }
 
         public static void StartUse()

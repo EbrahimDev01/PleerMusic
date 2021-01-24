@@ -28,7 +28,11 @@ namespace PleerMusic.App.UserControls
             PlayMusicContorl.Address = address;
             PlayMusicContorl.StartUse();
             PlayMusicContorl.PlayMusic();
+            PlayMusicContorl.VolumeMusic(50);
             ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).pcMusicImage.Image = PlayMusicContorl.GetImageMusic();
+            ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).lblMaxTime.Text = PlayMusicContorl.TotalTime;
+
+
         }
     }
 }

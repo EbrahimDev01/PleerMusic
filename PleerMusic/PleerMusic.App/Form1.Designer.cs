@@ -146,10 +146,14 @@
             // trbVolume
             // 
             this.trbVolume.AutoSize = false;
+            this.trbVolume.LargeChange = 1;
             this.trbVolume.Location = new System.Drawing.Point(136, 54);
+            this.trbVolume.Maximum = 100;
             this.trbVolume.Name = "trbVolume";
             this.trbVolume.Size = new System.Drawing.Size(113, 21);
             this.trbVolume.TabIndex = 5;
+            this.trbVolume.Value = 50;
+            this.trbVolume.Scroll += new System.EventHandler(this.trbVolume_Scroll);
             // 
             // panel1
             // 
@@ -269,7 +273,7 @@
             // addMusicToolStripMenuItem1
             // 
             this.addMusicToolStripMenuItem1.Name = "addMusicToolStripMenuItem1";
-            this.addMusicToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addMusicToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
             this.addMusicToolStripMenuItem1.Text = "Add Music";
             this.addMusicToolStripMenuItem1.Click += new System.EventHandler(this.addMusicToolStripMenuItem1_Click);
             // 
@@ -312,7 +316,6 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblPositionTime;
-        private System.Windows.Forms.Label lblMaxTime;
         private System.Windows.Forms.TrackBar trbVolume;
         private System.Windows.Forms.Button btnSongs;
         private System.Windows.Forms.Button btnArtists;
@@ -324,6 +327,7 @@
         private System.Windows.Forms.ToolStripMenuItem moreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addMusicToolStripMenuItem1;
         public System.Windows.Forms.PictureBox pcMusicImage;
+        public System.Windows.Forms.Label lblMaxTime;
     }
 }
 
