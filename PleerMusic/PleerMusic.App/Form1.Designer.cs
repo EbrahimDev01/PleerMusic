@@ -173,9 +173,11 @@
             this.trbTimeMusic.AutoSize = false;
             this.trbTimeMusic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trbTimeMusic.Location = new System.Drawing.Point(49, 0);
+            this.trbTimeMusic.Maximum = 2147483647;
             this.trbTimeMusic.Name = "trbTimeMusic";
             this.trbTimeMusic.Size = new System.Drawing.Size(176, 32);
             this.trbTimeMusic.TabIndex = 1;
+            this.trbTimeMusic.Scroll += new System.EventHandler(this.trbTimeMusic_Scroll);
             // 
             // lblPositionTime
             // 
@@ -317,7 +319,6 @@
         private System.Windows.Forms.Panel plTopBar;
         private System.Windows.Forms.Panel plControl;
         private System.Windows.Forms.Panel plListMusic;
-        private System.Windows.Forms.TrackBar trbTimeMusic;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnNext;
@@ -336,6 +337,7 @@
         public System.Windows.Forms.Label lblMaxTime;
         public System.Windows.Forms.Timer timShowPositionNowMusic;
         public System.Windows.Forms.Label lblPositionTime;
+        public System.Windows.Forms.TrackBar trbTimeMusic;
     }
 }
 

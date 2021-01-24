@@ -158,12 +158,6 @@ namespace PleerMusic.App
 
 
 
-        //private void PrepareforPlayMusic(string address)
-        //{
-        //    PlayMusicContorl.Address = address;
-        //    PlayMusicContorl.StartUse();
-        //    pcMusicImage.Image = PlayMusicContorl.GetImageMusic();
-        //}
 
         private void moreToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -178,6 +172,13 @@ namespace PleerMusic.App
         private void timShowPositionNowMusic_Tick(object sender, EventArgs e)
         {
             lblPositionTime.Text = PlayMusicContorl.PositonTime.ToString();
+            trbTimeMusic.Value = PlayMusicContorl.TimeShift;
+
+        }
+
+        private void trbTimeMusic_Scroll(object sender, EventArgs e)
+        {
+            PlayMusicContorl.TimeShift = trbTimeMusic.Value;
         }
     }
 }

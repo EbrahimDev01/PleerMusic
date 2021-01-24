@@ -29,9 +29,12 @@ namespace PleerMusic.App.UserControls
             PlayMusicContorl.StartUse();
             PlayMusicContorl.PlayMusic();
             PlayMusicContorl.VolumeMusic(50);
+
             ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).pcMusicImage.Image = PlayMusicContorl.GetImageMusic();
             ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).lblMaxTime.Text = PlayMusicContorl.TotalTime;
             ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).timShowPositionNowMusic.Enabled = true;
+            ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).trbTimeMusic.Maximum = PlayMusicContorl.MaxLength;
+
 
         }
     }

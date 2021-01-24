@@ -16,6 +16,8 @@ namespace PleerMusic.App.Controls.PlayMusic
     public class PlayMusicContorl : IDisposable
     {
 
+        private static string _address;
+
 
         public static string Address
         {
@@ -56,7 +58,31 @@ namespace PleerMusic.App.Controls.PlayMusic
             }
         }
 
-        private static string _address;
+        public static int TimeShift
+        {
+            get
+            {
+                return (int)(audioFileReader.Position / 10);
+            }
+            set
+            {
+
+                audioFileReader.Position = (value * 10);
+            }
+        }
+
+        public static int MaxLength
+        {
+            get
+            {
+                if (wave == null)
+                {
+                    return 0;
+                }
+                return (int)(audioFileReader.Length / 10);
+            }
+        }
+
 
         private static AudioFileReader audioFileReader = null;
 
