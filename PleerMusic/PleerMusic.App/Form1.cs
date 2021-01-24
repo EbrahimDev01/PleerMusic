@@ -1,5 +1,6 @@
 ﻿using PleerMusic.App.Controls.PlayMusic;
 using PleerMusic.App.FormSongs;
+using PleerMusic.App.UserControls;
 using PleerMusic.DataLayer.Context;
 using PleerMusic.DataLayer.Models;
 using PleerMusic.Utility.MusicControl;
@@ -15,9 +16,9 @@ using System.Windows.Forms;
 
 namespace PleerMusic.App
 {
-    public partial class PleerMusic : Form
+    public partial class frmPleerMusic : Form
     {
-        public PleerMusic()
+        public frmPleerMusic()
         {
             InitializeComponent();
             CheckIsExist(_numberForm);
@@ -139,7 +140,7 @@ namespace PleerMusic.App
 
         private void PlayOrStop()
         {
-            
+
             if (PlayMusicContorl.IsPlay)
             {
                 PlayMusicContorl.StopMusic();
@@ -150,6 +151,7 @@ namespace PleerMusic.App
             }
         }
 
+       
 
         private void PrepareforPlayMusic(string address)
         {

@@ -41,6 +41,7 @@
             this.lblNameMusic.Size = new System.Drawing.Size(341, 31);
             this.lblNameMusic.TabIndex = 0;
             this.lblNameMusic.Text = "label1";
+            this.lblNameMusic.Click += new System.EventHandler(this.ClickSelectMusic);
             // 
             // lblNameSinger
             // 
@@ -51,6 +52,7 @@
             this.lblNameSinger.Size = new System.Drawing.Size(341, 23);
             this.lblNameSinger.TabIndex = 1;
             this.lblNameSinger.Text = "label2";
+            this.lblNameSinger.Click += new System.EventHandler(this.ClickSelectMusic);
             // 
             // ucMusicShow
             // 

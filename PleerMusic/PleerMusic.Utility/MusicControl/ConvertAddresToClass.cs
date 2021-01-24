@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Id3Lib.Exceptions;
 using TagLib;
 using System.Windows.Forms;
-using System.IO;
+
 
 namespace PleerMusic.Utility.MusicControl
 {
@@ -29,7 +29,7 @@ namespace PleerMusic.Utility.MusicControl
                         using (OpenFileDialog openFile = new OpenFileDialog())
                         {
                             openFile.FileName = addres;
-                            int extensionLength = Path.GetExtension(addres).Length;
+                            int extensionLength = System.IO.Path.GetExtension(addres).Length;
 
                             name = openFile.SafeFileName.Remove(openFile.SafeFileName.Length - extensionLength);
 
@@ -59,7 +59,7 @@ namespace PleerMusic.Utility.MusicControl
 
 
 
-                        foreach (var item in file.Tag.Artists)
+                        foreach (var item in file.Tag.Artists.ToList())
                         {
 
                             singer.SignerName = item;

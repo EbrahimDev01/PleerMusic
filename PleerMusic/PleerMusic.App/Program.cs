@@ -16,7 +16,7 @@ namespace PleerMusic.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PleerMusic());
+            Application.Run(new frmPleerMusic());
         }
     }
 }

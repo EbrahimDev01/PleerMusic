@@ -1,6 +1,6 @@
 ﻿namespace PleerMusic.App
 {
-    partial class PleerMusic
+    partial class frmPleerMusic
     {
         /// <summary>
         /// Required designer variable.
@@ -272,7 +272,7 @@
             this.addMusicToolStripMenuItem1.Text = "Add Music";
             this.addMusicToolStripMenuItem1.Click += new System.EventHandler(this.addMusicToolStripMenuItem1_Click);
             // 
-            // PleerMusic
+            // frmPleerMusic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -283,7 +283,7 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "PleerMusic";
+            this.Name = "frmPleerMusic";
             this.Text = "PleerMusic";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.plTopBar.ResumeLayout(false);
@@ -305,7 +305,6 @@
         private System.Windows.Forms.Panel plTopBar;
         private System.Windows.Forms.Panel plControl;
         private System.Windows.Forms.Panel plListMusic;
-        private System.Windows.Forms.PictureBox pcMusicImage;
         private System.Windows.Forms.TrackBar trbTimeMusic;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnPlay;
@@ -323,6 +322,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem moreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addMusicToolStripMenuItem1;
+        public System.Windows.Forms.PictureBox pcMusicImage;
     }
 }
 

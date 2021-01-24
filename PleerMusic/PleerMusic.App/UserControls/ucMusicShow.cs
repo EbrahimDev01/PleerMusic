@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PleerMusic.App.Controls.PlayMusic;
 
 namespace PleerMusic.App.UserControls
 {
@@ -15,6 +16,19 @@ namespace PleerMusic.App.UserControls
         public ucMusicShow()
         {
             InitializeComponent();
+        }
+
+        private void ClickSelectMusic(object sender, EventArgs e)
+        {
+            PrepareforPlayMusic(((Label)sender).Name);
+        }
+        private void PrepareforPlayMusic(string address)
+        {
+
+            PlayMusicContorl.Address = address;
+            PlayMusicContorl.StartUse();
+            PlayMusicContorl.PlayMusic();
+            ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).pcMusicImage.Image = PlayMusicContorl.Image();
         }
     }
 }
