@@ -27,6 +27,8 @@ namespace PleerMusic.App
 
         public List<string> Addresses = new List<string>();
 
+        private List<int> _randomNumbers= new List<int>();
+
         private void Form1_Load(object sender, EventArgs e)
         {
             // CheckIsExist(_numberForm);
