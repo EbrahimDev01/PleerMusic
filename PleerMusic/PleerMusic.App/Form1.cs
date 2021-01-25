@@ -27,7 +27,7 @@ namespace PleerMusic.App
 
         public List<string> Addresses = new List<string>();
 
-        private List<int> _randomNumbers= new List<int>();
+        private List<int> _randomNumbers = new List<int>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -203,8 +203,11 @@ namespace PleerMusic.App
             if (SelectedMusicNumber < 0)
                 SelectedMusicNumber = Addresses.Count - 1;
 
-
+            if()
             PlayMusicContorl.Address = Addresses[SelectedMusicNumber];
+
+            else
+
             PlayMusicContorl.StartUse();
             await SetDataMusic();
             PlayMusicContorl.PlayMusic();
@@ -248,5 +251,21 @@ namespace PleerMusic.App
 
 
         }
+
+        private int CreateRandomNumber()
+        {
+            int newRandomNumber = 0;
+            do
+            {
+
+                newRandomNumber = new Random().Next(0, Addresses.Count);
+
+            } while (_randomNumbers.Any(r => r == newRandomNumber));
+
+            _randomNumbers.Add(newRandomNumber);
+
+            return newRandomNumber;
+        }
+
     }
 }
