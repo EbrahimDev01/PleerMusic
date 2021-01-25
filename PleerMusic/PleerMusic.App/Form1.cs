@@ -31,6 +31,7 @@ namespace PleerMusic.App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // CheckIsExist(_numberForm);
 
         }
@@ -85,6 +86,7 @@ namespace PleerMusic.App
                         songs.Dock = DockStyle.Fill;
                         this.plListMusic.Controls.Add(songs);
                         songs.Show();
+
                         break;
                     }
 
@@ -203,10 +205,16 @@ namespace PleerMusic.App
             if (SelectedMusicNumber < 0)
                 SelectedMusicNumber = Addresses.Count - 1;
 
-            if()
-            PlayMusicContorl.Address = Addresses[SelectedMusicNumber];
+            if (cbRandomPlayback.Checked)
+            {
+                PlayMusicContorl.Address = Addresses[_randomNumbers[SelectedMusicNumber]];
 
+            }
             else
+            {
+                PlayMusicContorl.Address = Addresses[SelectedMusicNumber];
+            }
+
 
             PlayMusicContorl.StartUse();
             await SetDataMusic();
@@ -252,20 +260,42 @@ namespace PleerMusic.App
 
         }
 
-        private int CreateRandomNumber()
+        private async Task CreateRandomNumber()
         {
-            int newRandomNumber = 0;
-            do
-            {
 
-                newRandomNumber = new Random().Next(0, Addresses.Count);
+            await Task.Run(() =>
+             {
 
-            } while (_randomNumbers.Any(r => r == newRandomNumber));
+                 int newRandomNumber = 0;
 
-            _randomNumbers.Add(newRandomNumber);
 
-            return newRandomNumber;
+
+                 do
+                 {
+                     newRandomNumber = new Random().Next(0, Addresses.Count );
+                     if (!_randomNumbers.Where(n => n == newRandomNumber).Any())
+                     {
+                         _randomNumbers.Add(newRandomNumber);
+                     }
+
+
+
+                 } while (Addresses.Count != _randomNumbers.Count);
+
+
+             });
         }
 
+        private async void cbRandomPlayback_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Addresses.Count > 0)
+            {
+                await CreateRandomNumber();
+            }
+            else
+            {
+                cbRandomPlayback.Checked = false;
+            }
+        }
     }
 }

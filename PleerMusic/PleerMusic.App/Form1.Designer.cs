@@ -299,6 +299,7 @@
             this.cbRandomPlayback.TabIndex = 6;
             this.cbRandomPlayback.Text = "Random Playback";
             this.cbRandomPlayback.UseVisualStyleBackColor = true;
+            this.cbRandomPlayback.CheckedChanged += new System.EventHandler(this.cbRandomPlayback_CheckedChanged);
             // 
             // frmPleerMusic
             // 
