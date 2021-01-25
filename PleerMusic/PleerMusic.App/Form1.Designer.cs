@@ -51,6 +51,7 @@
             this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMusicToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timShowPositionNowMusic = new System.Windows.Forms.Timer(this.components);
+            this.cbRandomPlayback = new System.Windows.Forms.CheckBox();
             this.plTopBar.SuspendLayout();
             this.plControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbVolume)).BeginInit();
@@ -132,6 +133,7 @@
             // 
             // plControl
             // 
+            this.plControl.Controls.Add(this.cbRandomPlayback);
             this.plControl.Controls.Add(this.trbVolume);
             this.plControl.Controls.Add(this.panel1);
             this.plControl.Controls.Add(this.btnPrevious);
@@ -149,7 +151,7 @@
             // 
             this.trbVolume.AutoSize = false;
             this.trbVolume.LargeChange = 1;
-            this.trbVolume.Location = new System.Drawing.Point(136, 54);
+            this.trbVolume.Location = new System.Drawing.Point(259, 54);
             this.trbVolume.Maximum = 100;
             this.trbVolume.Name = "trbVolume";
             this.trbVolume.Size = new System.Drawing.Size(113, 21);
@@ -288,6 +290,16 @@
             this.timShowPositionNowMusic.Interval = 700;
             this.timShowPositionNowMusic.Tick += new System.EventHandler(this.timShowPositionNowMusic_Tick);
             // 
+            // cbRandomPlayback
+            // 
+            this.cbRandomPlayback.AutoSize = true;
+            this.cbRandomPlayback.Location = new System.Drawing.Point(135, 58);
+            this.cbRandomPlayback.Name = "cbRandomPlayback";
+            this.cbRandomPlayback.Size = new System.Drawing.Size(113, 17);
+            this.cbRandomPlayback.TabIndex = 6;
+            this.cbRandomPlayback.Text = "Random Playback";
+            this.cbRandomPlayback.UseVisualStyleBackColor = true;
+            // 
             // frmPleerMusic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,6 +316,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.plTopBar.ResumeLayout(false);
             this.plControl.ResumeLayout(false);
+            this.plControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbVolume)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trbTimeMusic)).EndInit();
@@ -340,6 +353,7 @@
         public System.Windows.Forms.Label lblPositionTime;
         public System.Windows.Forms.TrackBar trbTimeMusic;
         public System.Windows.Forms.TrackBar trbVolume;
+        private System.Windows.Forms.CheckBox cbRandomPlayback;
     }
 }
 
