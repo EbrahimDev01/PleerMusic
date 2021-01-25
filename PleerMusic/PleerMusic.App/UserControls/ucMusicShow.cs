@@ -21,38 +21,20 @@ namespace PleerMusic.App.UserControls
 
         private void ClickSelectMusic(object sender, EventArgs e)
         {
+            ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).SelectedMusicNumber = (int)((Control)sender).Tag;
             PrepareforPlayMusic(((Control)sender).Name);
-            GetNumberControls(((Control)sender).Name);
         }
-        private void PrepareforPlayMusic(string address)
+        private async void PrepareforPlayMusic(string address)
         {
 
             PlayMusicContorl.Address = address;
             PlayMusicContorl.StartUse();
-            ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).SetDataMusic();
 
-
-        }
-
-        private void GetNumberControls(string address)
-        {
-            frmSongs frm = ((frmSongs)(Application.OpenForms["frmSongs"]));
-            int i = 1;
-            foreach (var item in frm.Controls)
-            {
-                if (item is ucMusicShow)
-                {
-                    if (((ucMusicShow)item).Tag.ToString() == address)
-                    {
-                        ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).SelectedMusicNumber = frm.Controls.Count - i;
-                        break;
-                    }
-
-                }
-                i++;
-            }
+            await ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).SetDataMusic();
+            PlayMusicContorl.PlayMusic();
 
         }
+
 
     }
 }

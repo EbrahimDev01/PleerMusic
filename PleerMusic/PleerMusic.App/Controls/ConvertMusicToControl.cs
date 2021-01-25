@@ -66,6 +66,7 @@ namespace PleerMusic.App
                 p1.Height = 2;
                 p1.TabIndex = 2;
                 controls.Add(p1);
+                int i;
                 foreach (var m in musics)
                 {
                     var ucMusic = new ucMusicShow();
@@ -75,6 +76,12 @@ namespace PleerMusic.App
                     ucMusic.TabIndex = 1;
                     ucMusic.Tag = m.MusicAddress;
                     ucMusic.pcMusicImage.Name = ucMusic.lblNameSinger.Name = ucMusic.lblNameMusic.Name = m.MusicAddress;
+
+                    ucMusic.pcMusicImage.Tag = ucMusic.lblNameSinger.Tag = ucMusic.lblNameMusic.Tag = ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).Addresses.Count;
+
+
+                    ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).Addresses.Add(m.MusicAddress);
+
                     controls.Add(ucMusic);
 
                     ucMusic.pcMusicImage.Image = ImageControl.GetImageMusic(m.MusicAddress, 54, 54);

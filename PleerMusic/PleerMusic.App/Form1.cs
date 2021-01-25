@@ -4,6 +4,7 @@ using PleerMusic.App.UserControls;
 using PleerMusic.DataLayer.Context;
 using PleerMusic.DataLayer.Models;
 using PleerMusic.Utility.MusicControl;
+using PleerMusic.ViewModels.MusicViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,8 @@ namespace PleerMusic.App
             InitializeComponent();
             CheckIsExist(_numberForm);
         }
+
+        public List<string> Addresses = new List<string>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -184,41 +187,43 @@ namespace PleerMusic.App
 
         public int SelectedMusicNumber = 1;
 
-        private void SelectMusicInList()
+        private async void SelectMusicInList()
         {
-            frmSongs frm = (frmSongs)plListMusic.Controls[0];
+
+            if (Addresses.Count == SelectedMusicNumber)
+                SelectedMusicNumber = 0;
+
+            if (SelectedMusicNumber < 0)
+                SelectedMusicNumber = Addresses.Count - 1;
 
 
-            if (SelectedMusicNumber == frm.Controls.Count )
-                SelectedMusicNumber = 1;
+            PlayMusicContorl.Address = Addresses[SelectedMusicNumber];
+            PlayMusicContorl.StartUse();
+            await SetDataMusic();
+            PlayMusicContorl.PlayMusic();
 
-            else if (SelectedMusicNumber == -1)
-                SelectedMusicNumber = frm.Controls.Count-2;
-
-            if (plListMusic.Controls[0] is frmSongs)
-            {
-
-                int selectMusicReal = ((frm.Controls.Count - 1) - SelectedMusicNumber);
-                PlayMusicContorl.Address = frm.Controls[selectMusicReal].Tag.ToString();
-                PlayMusicContorl.StartUse();
-                SetDataMusic();
-            }
 
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            SelectedMusicNumber += 2;
+            SelectedMusicNumber--;
             SelectMusicInList();
         }
 
 
 
 
-        public void SetDataMusic()
+        public async Task SetDataMusic()
         {
-            PlayMusicContorl.VolumeMusic(trbVolume.Value);
-            pcMusicImage.Image = PlayMusicContorl.GetImageMusic();
+            int volum = trbVolume.Value;
+            await Task.Run(() =>
+             {
+                 PlayMusicContorl.VolumeMusic(volum);
+
+                 pcMusicImage.Image = PlayMusicContorl.GetImageMusic();
+             });
+
             lblMaxTime.Text = PlayMusicContorl.TotalTime;
             timShowPositionNowMusic.Enabled = true;
             trbTimeMusic.Maximum = PlayMusicContorl.MaxLength;
@@ -226,7 +231,7 @@ namespace PleerMusic.App
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            SelectedMusicNumber -= 2;
+            SelectedMusicNumber++;
             SelectMusicInList();
         }
     }

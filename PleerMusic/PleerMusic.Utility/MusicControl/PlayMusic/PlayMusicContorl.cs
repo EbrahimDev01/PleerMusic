@@ -62,12 +62,12 @@ namespace PleerMusic.App.Controls.PlayMusic
         {
             get
             {
-                return (int)(audioFileReader.Position / 10);
+                return (int)(audioFileReader.Position / 100);
             }
             set
             {
 
-                audioFileReader.Position = (value * 10);
+                audioFileReader.Position = (value * 100);
             }
         }
 
@@ -79,7 +79,7 @@ namespace PleerMusic.App.Controls.PlayMusic
                 {
                     return 0;
                 }
-                return (int)(audioFileReader.Length / 10);
+                return (int)(audioFileReader.Length / 100);
             }
         }
 
@@ -142,7 +142,7 @@ namespace PleerMusic.App.Controls.PlayMusic
                 wave = new WaveOut();
                 wave?.Init(audioFileReader);
 
-                PlayMusic();
+                
             }
             catch
             {
