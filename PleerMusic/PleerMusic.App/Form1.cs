@@ -176,6 +176,11 @@ namespace PleerMusic.App
         {
             lblPositionTime.Text = PlayMusicContorl.PositonTime.ToString();
             trbTimeMusic.Value = PlayMusicContorl.TimeShift;
+            if (PlayMusicContorl.TimeShift >= PlayMusicContorl.MaxLength)
+            {
+                SelectedMusicNumber--;
+                SelectMusicInList();
+            }
 
         }
 
@@ -211,9 +216,6 @@ namespace PleerMusic.App
             SelectMusicInList();
         }
 
-
-
-
         public async Task SetDataMusic()
         {
             int volum = trbVolume.Value;
@@ -231,8 +233,11 @@ namespace PleerMusic.App
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
+
+            
             SelectedMusicNumber++;
-            SelectMusicInList();
+                SelectMusicInList();
+            
         }
     }
 }
