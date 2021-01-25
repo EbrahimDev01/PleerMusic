@@ -234,10 +234,17 @@ namespace PleerMusic.App
         private void btnPrevious_Click(object sender, EventArgs e)
         {
 
-            
-            SelectedMusicNumber++;
+            if (PlayMusicContorl.TimeShift / 3537 < 30)
+            {
+                SelectedMusicNumber++;
                 SelectMusicInList();
-            
+            }
+            else
+            {
+                PlayMusicContorl.TimeShift = 0;
+            }
+
+
         }
     }
 }
