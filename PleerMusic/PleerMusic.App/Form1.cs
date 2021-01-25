@@ -27,6 +27,7 @@ namespace PleerMusic.App
         private void Form1_Load(object sender, EventArgs e)
         {
             // CheckIsExist(_numberForm);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -149,15 +150,14 @@ namespace PleerMusic.App
             if (PlayMusicContorl.IsPlay)
             {
                 PlayMusicContorl.StopMusic();
+                btnPlay.Text = "Stop";
             }
             else
             {
                 PlayMusicContorl.PlayMusic();
+                btnPlay.Text = "Play";
             }
         }
-
-
-
 
         private void moreToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -179,6 +179,55 @@ namespace PleerMusic.App
         private void trbTimeMusic_Scroll(object sender, EventArgs e)
         {
             PlayMusicContorl.TimeShift = trbTimeMusic.Value;
+        }
+
+
+        public int SelectedMusicNumber = 1;
+
+        private void SelectMusicInList()
+        {
+            frmSongs frm = (frmSongs)plListMusic.Controls[0];
+
+
+            if (SelectedMusicNumber == frm.Controls.Count )
+                SelectedMusicNumber = 1;
+
+            else if (SelectedMusicNumber == -1)
+                SelectedMusicNumber = frm.Controls.Count-2;
+
+            if (plListMusic.Controls[0] is frmSongs)
+            {
+
+                int selectMusicReal = ((frm.Controls.Count - 1) - SelectedMusicNumber);
+                PlayMusicContorl.Address = frm.Controls[selectMusicReal].Tag.ToString();
+                PlayMusicContorl.StartUse();
+                SetDataMusic();
+            }
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            SelectedMusicNumber += 2;
+            SelectMusicInList();
+        }
+
+
+
+
+        public void SetDataMusic()
+        {
+            PlayMusicContorl.VolumeMusic(trbVolume.Value);
+            pcMusicImage.Image = PlayMusicContorl.GetImageMusic();
+            lblMaxTime.Text = PlayMusicContorl.TotalTime;
+            timShowPositionNowMusic.Enabled = true;
+            trbTimeMusic.Maximum = PlayMusicContorl.MaxLength;
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            SelectedMusicNumber -= 2;
+            SelectMusicInList();
         }
     }
 }

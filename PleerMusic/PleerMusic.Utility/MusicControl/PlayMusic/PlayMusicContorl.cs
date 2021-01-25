@@ -136,10 +136,13 @@ namespace PleerMusic.App.Controls.PlayMusic
         {
             try
             {
+                DisposeInstance();
+
                 audioFileReader = new AudioFileReader(_address);
                 wave = new WaveOut();
                 wave?.Init(audioFileReader);
 
+                PlayMusic();
             }
             catch
             {
@@ -159,7 +162,7 @@ namespace PleerMusic.App.Controls.PlayMusic
             wave = null;
             audioFileReader = null;
             //  Address = null;
-            _address = null;
+
         }
 
         public void Dispose()

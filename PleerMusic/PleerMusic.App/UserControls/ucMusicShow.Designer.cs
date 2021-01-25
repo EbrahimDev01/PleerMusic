@@ -64,6 +64,7 @@
             this.pcMusicImage.Size = new System.Drawing.Size(54, 54);
             this.pcMusicImage.TabIndex = 2;
             this.pcMusicImage.TabStop = false;
+            this.pcMusicImage.Click += new System.EventHandler(this.ClickSelectMusic);
             // 
             // ucMusicShow
             // 

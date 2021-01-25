@@ -207,6 +207,7 @@
             this.btnPrevious.TabIndex = 4;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnPlay
             // 
@@ -226,6 +227,7 @@
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // lblNameMusic
             // 
@@ -323,7 +325,6 @@
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TrackBar trbVolume;
         private System.Windows.Forms.Button btnSongs;
         private System.Windows.Forms.Button btnArtists;
         private System.Windows.Forms.Button btnAlbums;
@@ -338,6 +339,7 @@
         public System.Windows.Forms.Timer timShowPositionNowMusic;
         public System.Windows.Forms.Label lblPositionTime;
         public System.Windows.Forms.TrackBar trbTimeMusic;
+        public System.Windows.Forms.TrackBar trbVolume;
     }
 }
 

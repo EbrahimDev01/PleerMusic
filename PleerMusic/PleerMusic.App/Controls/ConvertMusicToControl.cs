@@ -73,7 +73,8 @@ namespace PleerMusic.App
                     ucMusic.lblNameSinger.Text = m.SingerThisMusic;
                     ucMusic.Dock = DockStyle.Top;
                     ucMusic.TabIndex = 1;
-                    ucMusic.lblNameSinger.Name = ucMusic.lblNameMusic.Name = m.MusicAddress;
+                    ucMusic.Tag = m.MusicAddress;
+                    ucMusic.pcMusicImage.Name = ucMusic.lblNameSinger.Name = ucMusic.lblNameMusic.Name = m.MusicAddress;
                     controls.Add(ucMusic);
 
                     ucMusic.pcMusicImage.Image = ImageControl.GetImageMusic(m.MusicAddress, 54, 54);
@@ -105,7 +106,9 @@ namespace PleerMusic.App
 
 
         }
-    
+
+
+
     }
 }
 
