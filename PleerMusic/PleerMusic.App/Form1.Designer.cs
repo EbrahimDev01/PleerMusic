@@ -36,6 +36,7 @@
             this.btnPlayLists = new System.Windows.Forms.Button();
             this.btnSongs = new System.Windows.Forms.Button();
             this.plControl = new System.Windows.Forms.Panel();
+            this.cbRandomPlayback = new System.Windows.Forms.CheckBox();
             this.trbVolume = new System.Windows.Forms.TrackBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.trbTimeMusic = new System.Windows.Forms.TrackBar();
@@ -51,7 +52,6 @@
             this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMusicToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timShowPositionNowMusic = new System.Windows.Forms.Timer(this.components);
-            this.cbRandomPlayback = new System.Windows.Forms.CheckBox();
             this.plTopBar.SuspendLayout();
             this.plControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbVolume)).BeginInit();
@@ -146,6 +146,17 @@
             this.plControl.Name = "plControl";
             this.plControl.Size = new System.Drawing.Size(390, 116);
             this.plControl.TabIndex = 2;
+            // 
+            // cbRandomPlayback
+            // 
+            this.cbRandomPlayback.AutoSize = true;
+            this.cbRandomPlayback.Location = new System.Drawing.Point(135, 58);
+            this.cbRandomPlayback.Name = "cbRandomPlayback";
+            this.cbRandomPlayback.Size = new System.Drawing.Size(113, 17);
+            this.cbRandomPlayback.TabIndex = 6;
+            this.cbRandomPlayback.Text = "Random Playback";
+            this.cbRandomPlayback.UseVisualStyleBackColor = true;
+            this.cbRandomPlayback.CheckedChanged += new System.EventHandler(this.cbRandomPlayback_CheckedChanged);
             // 
             // trbVolume
             // 
@@ -289,17 +300,6 @@
             // 
             this.timShowPositionNowMusic.Interval = 700;
             this.timShowPositionNowMusic.Tick += new System.EventHandler(this.timShowPositionNowMusic_Tick);
-            // 
-            // cbRandomPlayback
-            // 
-            this.cbRandomPlayback.AutoSize = true;
-            this.cbRandomPlayback.Location = new System.Drawing.Point(135, 58);
-            this.cbRandomPlayback.Name = "cbRandomPlayback";
-            this.cbRandomPlayback.Size = new System.Drawing.Size(113, 17);
-            this.cbRandomPlayback.TabIndex = 6;
-            this.cbRandomPlayback.Text = "Random Playback";
-            this.cbRandomPlayback.UseVisualStyleBackColor = true;
-            this.cbRandomPlayback.CheckedChanged += new System.EventHandler(this.cbRandomPlayback_CheckedChanged);
             // 
             // frmPleerMusic
             // 

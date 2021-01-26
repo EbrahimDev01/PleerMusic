@@ -18,18 +18,47 @@ namespace PleerMusic.App.FormSongs
         public frmSongs()
         {
             InitializeComponent();
+
         }
 
         private async void frmSongs_Load(object sender, EventArgs e)
         {
+            timer1.Enabled = true;
             await ListMusicBind();
         }
 
         private async Task ListMusicBind()
         {
+
             Controls.AddRange((await ConvertMusicToControlMusic.Shows()).ToArray());
+            EndLoad();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ConvertMusicToControlMusic.max > 0)
+                {
+                    progressBar1.Value = (int)((ConvertMusicToControlMusic.Positionvalue * 100) / ConvertMusicToControlMusic.max);
+
+                }
+                else progressBar1.Value = 0;
+            }
+            catch
+            {
+                progressBar1.Value = 0;
+
+
+            }
+        }
+
+
+        private void EndLoad()
+        {
+            progressBar1.Hide();
+            timer1.Enabled = false;
+        }
 
     }
 }

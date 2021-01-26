@@ -10,17 +10,41 @@ using System.Text;
 using System.Threading.Tasks;
 using PleerMusic.DataLayer.Models;
 using PleerMusic.Utility.Image;
+using PleerMusic.App.FormSongs;
 
 namespace PleerMusic.App
 {
     public static class ConvertMusicToControlMusic
     {
 
+        public static int max
+        {
+            get
+            {
+
+                return _maxValue;
+            }
+        }
+
+        public static int Positionvalue
+        {
+            get
+            {
+                return _positionValue;
+            }
+
+        }
+
+        private static int _maxValue = 0;
+        private static int _positionValue = 0;
+
         public async static Task<List<Control>> Shows(string where = null)
         {
             List<vmMusic> vmMusics = await GetDateFromDb();
 
-            return await ucMusics(vmMusics);
+            _maxValue = vmMusics.Count;
+
+            return await (ucMusics(vmMusics.OrderByDescending(m => m.MusicName).ToList()));
 
 
         }
@@ -35,8 +59,8 @@ namespace PleerMusic.App
 
 
 
-                    return db.pMusic.GetAll()
-                        .Select(
+                    List<vmMusic> musics = db.pMusic.GetAll().ToList()
+                    .Select(
                         m =>
                         new vmMusic
                         {
@@ -49,7 +73,7 @@ namespace PleerMusic.App
 
 
 
-
+                    return musics;
 
                 }
             });
@@ -57,6 +81,7 @@ namespace PleerMusic.App
 
         private async static Task<List<Control>> ucMusics(List<vmMusic> musics)
         {
+
             return await Task<List<Control>>.Run(() =>
             {
                 List<Control> controls = new List<Control>();
@@ -66,9 +91,14 @@ namespace PleerMusic.App
                 p1.Height = 2;
                 p1.TabIndex = 2;
                 controls.Add(p1);
-                int i;
+                int i = 0;
                 foreach (var m in musics)
                 {
+                    i++;
+                    if (i >= 197)
+                    {
+
+                    }
                     var ucMusic = new ucMusicShow();
                     ucMusic.lblNameMusic.Text = m.MusicName;
                     ucMusic.lblNameSinger.Text = m.SingerThisMusic;
@@ -79,8 +109,9 @@ namespace PleerMusic.App
 
                     ucMusic.pcMusicImage.Tag = ucMusic.lblNameSinger.Tag = ucMusic.lblNameMusic.Tag = ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).Addresses.Count;
 
-
                     ((frmPleerMusic)(Application.OpenForms["frmPleerMusic"])).Addresses.Add(m.MusicAddress);
+
+
 
                     controls.Add(ucMusic);
 
@@ -93,7 +124,11 @@ namespace PleerMusic.App
                     p.TabIndex = 2;
                     controls.Add(p);
 
+                    _positionValue = (int)ucMusic.lblNameMusic.Tag;
+                    if (_positionValue == 190)
+                    {
 
+                    }
                 }
 
                 return controls;
@@ -114,8 +149,21 @@ namespace PleerMusic.App
 
         }
 
+        private static void SelectingucMusicTofrmSongs(Control c)
+        {
+
+        }
 
 
     }
 }
 
+
+
+/*
+ 
+ 
+ 
+
+ 
+ */
