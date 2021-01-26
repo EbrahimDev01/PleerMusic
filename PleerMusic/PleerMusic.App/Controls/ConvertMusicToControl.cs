@@ -85,20 +85,31 @@ namespace PleerMusic.App
             return await Task<List<Control>>.Run(() =>
             {
                 List<Control> controls = new List<Control>();
+
+                Label label1 = new Label();
+                label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+                label1.Dock = System.Windows.Forms.DockStyle.Top;
+                label1.ForeColor = System.Drawing.Color.White;
+                label1.Location = new System.Drawing.Point(0, 43);
+                label1.Name = "label1";
+                label1.Size = new System.Drawing.Size(341, 13);
+                label1.TabIndex = 2;
+                label1.Text = _maxValue.ToString();
+                label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                controls.Add(label1);
+
+
+
                 Panel p1 = new Panel();
                 p1.Dock = DockStyle.Top;
                 p1.BackColor = System.Drawing.Color.Black;
                 p1.Height = 2;
                 p1.TabIndex = 2;
                 controls.Add(p1);
-                int i = 0;
+
                 foreach (var m in musics)
                 {
-                    i++;
-                    if (i >= 197)
-                    {
 
-                    }
                     var ucMusic = new ucMusicShow();
                     ucMusic.lblNameMusic.Text = m.MusicName;
                     ucMusic.lblNameSinger.Text = m.SingerThisMusic;
@@ -122,16 +133,16 @@ namespace PleerMusic.App
                     p.BackColor = System.Drawing.Color.Black;
                     p.Height = 2;
                     p.TabIndex = 2;
-                    controls.Add(p);
+
 
                     _positionValue = (int)ucMusic.lblNameMusic.Tag;
-                    if (_positionValue == 190)
-                    {
 
-                    }
+                    controls.Add(p);
+
                 }
-
                 return controls;
+
+
             });
         }
 

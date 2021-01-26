@@ -45,6 +45,11 @@
     <Compile Include="MusicViewModel\vmMusic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PleerMusic.DataLayer\PleerMusic.DataLayer.csproj">
+      <Project>{3302BEFD-6CAD-418B-A37B-03F72CC31884}</Project>
+      <Name>PleerMusic.DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

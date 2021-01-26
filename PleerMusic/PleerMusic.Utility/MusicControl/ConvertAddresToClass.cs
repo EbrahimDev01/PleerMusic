@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Id3Lib.Exceptions;
 using TagLib;
 using System.Windows.Forms;
-
+using PleerMusic.DataLayer.Context;
 
 namespace PleerMusic.Utility.MusicControl
 {
@@ -16,7 +16,25 @@ namespace PleerMusic.Utility.MusicControl
 
         public static async Task<List<(Music music, AlbumMusic album, Singer singer)>> ToClass(List<string> listAddress)
         {
+
+
+            using (uowPleerMusic db = new uowPleerMusic())
+            {
+                foreach (var item in db.pMusic.GetAll().ToList())
+                {
+
+                    listAddress.Remove(item.MusicAddress.ToString());
+                    if (listAddress.Count == 0)
+                        return null;
+
+                }
+            }
+
+
+
             List<(Music music, AlbumMusic album, Singer singer)> lsitClass = new List<(Music music, AlbumMusic album, Singer singer)>();
+
+
 
             await Task.Run(() =>
             {
@@ -81,9 +99,9 @@ namespace PleerMusic.Utility.MusicControl
                     catch
                     {
 
-                        
+
                     }
-                    
+
                 }
             });
             return lsitClass;

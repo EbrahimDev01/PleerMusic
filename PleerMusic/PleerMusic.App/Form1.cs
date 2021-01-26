@@ -4,6 +4,7 @@ using PleerMusic.App.UserControls;
 using PleerMusic.DataLayer.Context;
 using PleerMusic.DataLayer.Models;
 using PleerMusic.Utility.MusicControl;
+using PleerMusic.ViewModels;
 using PleerMusic.ViewModels.MusicViewModel;
 using System;
 using System.Collections.Generic;
@@ -29,10 +30,11 @@ namespace PleerMusic.App
 
         private List<int> _randomNumbers = new List<int>();
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
 
             // CheckIsExist(_numberForm);
+            await CheckFileDelete.DeleteAddressesFromDb();
 
         }
 
@@ -97,11 +99,15 @@ namespace PleerMusic.App
         private async void addMusicToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             List<string> musicList = SelectMusic();
+
+
             if (musicList != null)
             {
+
                 List<(Music music, AlbumMusic album, Singer singer)> listClass = await ConvertAddresToClass.ToClass(musicList);
 
-                await InsertMusicsToDb(listClass);
+                if (listClass != null)
+                    await InsertMusicsToDb(listClass);
                 musicList = null;
                 listClass = null;
             }
@@ -117,6 +123,9 @@ namespace PleerMusic.App
 
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
+
+
+
                     return openFile.FileNames.ToList();
                 }
             }
@@ -272,7 +281,7 @@ namespace PleerMusic.App
 
                  do
                  {
-                     newRandomNumber = new Random().Next(0, Addresses.Count );
+                     newRandomNumber = new Random().Next(0, Addresses.Count);
                      if (!_randomNumbers.Where(n => n == newRandomNumber).Any())
                      {
                          _randomNumbers.Add(newRandomNumber);
